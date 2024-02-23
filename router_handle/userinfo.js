@@ -15,14 +15,14 @@ exports.uploadAvatar = (req, res) => {
 	fs.renameSync('./public/upload/' + oldName, './public/upload/' + newName)
 	const sql = 'insert into image set ?'
 	db.query(sql, {
-		image_url: `http://127.0.0.1:3007/upload/${newName}`,
+		image_url: `https://121.36.70.237:3007/upload/${newName}`,
 		onlyId
 	}, (err, result) => {
 		if (err) return res.cc(err)
 		res.send({
 			onlyId,
 			status: 0,
-			url: 'http://127.0.0.1:3007/upload/' + newName
+			url: 'https://121.36.70.237:3007/upload/' + newName
 		})
 	})
 }

@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : back_system
+Source Server         : back_system1
 Source Server Version : 50726
 Source Host           : localhost:3306
-Source Database       : back_system
+Source Database       : back_system1
 
 Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2023-10-28 22:01:32
+Date: 2024-02-04 10:24:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,6 +31,10 @@ CREATE TABLE `files` (
 ) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of files
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for image
 -- ----------------------------
 DROP TABLE IF EXISTS `image`;
@@ -40,7 +44,12 @@ CREATE TABLE `image` (
   `account` int(255) DEFAULT NULL,
   `onlyId` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of image
+-- ----------------------------
+INSERT INTO `image` VALUES ('11', 'http://127.0.0.1:3007/upload/头像.jpg', null, 'dabc0c29-21cd-4597-92de-47d303578d6a');
 
 -- ----------------------------
 -- Table structure for login_log
@@ -53,7 +62,11 @@ CREATE TABLE `login_log` (
   `email` varchar(255) DEFAULT NULL,
   `login_time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of login_log
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for message
@@ -77,6 +90,10 @@ CREATE TABLE `message` (
 ) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of message
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for operation_log
 -- ----------------------------
 DROP TABLE IF EXISTS `operation_log`;
@@ -88,6 +105,10 @@ CREATE TABLE `operation_log` (
   `operation_time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of operation_log
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for outproduct
@@ -105,6 +126,10 @@ CREATE TABLE `outproduct` (
   `product_apply_time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of outproduct
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for product
@@ -138,6 +163,10 @@ CREATE TABLE `product` (
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of product
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for setting
 -- ----------------------------
 DROP TABLE IF EXISTS `setting`;
@@ -148,6 +177,23 @@ CREATE TABLE `setting` (
   `set_text` text,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of setting
+-- ----------------------------
+INSERT INTO `setting` VALUES ('1', 'swiper1', null, null);
+INSERT INTO `setting` VALUES ('2', 'swiper2', null, null);
+INSERT INTO `setting` VALUES ('3', 'swiper3', null, null);
+INSERT INTO `setting` VALUES ('4', 'swiper4', null, null);
+INSERT INTO `setting` VALUES ('5', 'swiper5', null, null);
+INSERT INTO `setting` VALUES ('6', 'swiper6', null, null);
+INSERT INTO `setting` VALUES ('7', '公司名称', '济南晏猫小酒馆', null);
+INSERT INTO `setting` VALUES ('8', '公司介绍', null, null);
+INSERT INTO `setting` VALUES ('9', '公司架构', null, null);
+INSERT INTO `setting` VALUES ('10', '公司战略', null, null);
+INSERT INTO `setting` VALUES ('11', '公司高层', null, null);
+INSERT INTO `setting` VALUES ('12', '部门设置', '[\"总裁办\"]', null);
+INSERT INTO `setting` VALUES ('13', '产品设置', '[\"食品类\"]', null);
 
 -- ----------------------------
 -- Table structure for users
@@ -169,4 +215,9 @@ CREATE TABLE `users` (
   `read_list` varchar(255) DEFAULT NULL,
   `read_status` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of users
+-- ----------------------------
+INSERT INTO `users` VALUES ('43', '123666', '$2a$10$TyJm48diZ6VgnsjxSdEKBOR9rfAiH/pcVjrH/RjUKzVWkakNFPBcu', '超级管理员', '', '张三', '男', null, null, '2024-01-31 10:44:18.102', null, '0', '[]', '1');

@@ -6,7 +6,7 @@ exports.uploadSwiper = (req, res) => {
 	let newName = Buffer.from(req.files[0].originalname, 'latin1').toString('utf8')
 	fs.renameSync('./public/upload/' + oldName, './public/upload/' + newName)
 	const sql = 'update setting set set_value = ? where set_name = ?'
-	db.query(sql, [`http://127.0.0.1:3007/upload/${newName}`, req.body.name], (err, result) => {
+	db.query(sql, [`https://121.36.70.237:3007/upload/${newName}`, req.body.name], (err, result) => {
 		if (err) return res.cc(err)
 		res.send({
 			status: 0,
@@ -21,13 +21,20 @@ exports.getAllSwiper = (req, res) => {
 	const sql = "select set_value from setting where set_name like 'swiper%' "
 	db.query(sql, (err, result) => {
 		if (err) return res.cc(err)
-		// 创建了一个数组
-		let array = []
-		// 把set_value 放进数组
-		result.forEach((e) => {
-			array.push(e.set_value)
-		})
-		res.send(array)
+		if(result){
+			// 创建了一个数组
+			let array = []
+			// 把set_value 放进数组
+			result.forEach((e) => {
+				array.push(e.set_value)
+			})
+			res.send(array)
+		}else{
+			res.send({
+				status:1,
+				message:'请添加轮播图'
+			})
+		}
 	})
 }
 
@@ -36,7 +43,15 @@ exports.getCompanyName = (req, res) => {
 	const sql = 'select * from setting where set_name = "公司名称"'
 	db.query(sql, (err, result) => {
 		if (err) return res.cc(err)
-		res.send(result[0].set_value)
+		if(result[0].set_value){
+			res.send(result[0].set_value)
+		}else{
+			res.send({
+				status:1,
+				message:'请设置公司名称'
+			})
+		}
+		
 	})
 }
 
@@ -101,7 +116,14 @@ exports.getDepartment = (req, res) => {
 	const sql = 'select set_value from setting where set_name = "部门设置"'
 	db.query(sql, (err, result) => {
 		if (err) return res.cc(err)
-		res.send(result[0].set_value)
+		if(result[0].set_value){
+			res.send(result[0].set_value)
+		}else{
+			res.send({
+				status:1,
+				message:'请设置公司部门'
+			})
+		}
 	})
 }
 
@@ -122,6 +144,14 @@ exports.getProduct = (req, res) => {
 	const sql = 'select set_value from setting where set_name = "产品设置"'
 	db.query(sql, (err, result) => {
 		if (err) return res.cc(err)
-		res.send(result[0].set_value)
+		
+		if(result[0].set_value){
+			res.send(result[0].set_value)
+		}else{
+			res.send({
+				status:1,
+				message:'请设置产品种类'
+			})
+		}
 	})
 }

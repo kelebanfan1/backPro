@@ -2,6 +2,7 @@
 const express = require('express')
 // 创建express实例
 const app = express()
+const path = require('path');
 // 导入body-parser
 var bodyParser = require('body-parser')
 
@@ -9,8 +10,6 @@ var bodyParser = require('body-parser')
 const cors = require('cors')
 // 全局挂载
 app.use(cors())
-
-
 // Multer 是一个 node.js 中间件，用于处理 multipart/form-data 类型的表单数据，它主要用于上传文件。
 const multer = require("multer");
 // 在server服务端下新建一个public文件，在public文件下新建upload文件用于存放图片
@@ -19,8 +18,11 @@ const upload = multer({
 })
 app.use(upload.any())
 // 静态托管
+app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.static("./public"));
-
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
 // parse application/x-www-form-urlencoded
 // 当extended为false时，值为数组或者字符串，当为ture时，值可以为任意类型
 app.use(bodyParser.urlencoded({
