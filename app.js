@@ -2,7 +2,7 @@
 const express = require('express')
 // 创建express实例
 const app = express()
-const path = require('path');
+// const path = require('path');
 // 导入body-parser
 var bodyParser = require('body-parser')
 
@@ -18,8 +18,8 @@ const upload = multer({
 })
 app.use(upload.any())
 // 静态托管
-app.use(express.static(path.join(__dirname, 'dist')));
-app.use(express.static("./public"));
+// app.use(express.static(path.join(__dirname, 'dist')));
+// app.use(express.static("./public"));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
@@ -48,11 +48,11 @@ const jwtconfig = require('./jwt_config/index.js')
 const {
 	expressjwt: jwt
 } = require('express-jwt')
-// app.use(jwt({
-// 	secret:jwtconfig.jwtSecretKey,algorithms:['HS256']
-// }).unless({
-// 	path:[/^\/api\//]
-// }))
+app.use(jwt({
+	secret:jwtconfig.jwtSecretKey,algorithms:['HS256']
+}).unless({
+	path:[/^\/api\//]
+}))
 
 const loginRouter = require('./router/login')
 const Joi = require('joi')
@@ -85,6 +85,22 @@ app.use((err,req, res, next) => {
 		})
 	}
 })
+
+//全局中间件
+app.use(function (err, req, res, next) {
+	if (err.name === "UnauthorizedError") {
+		res.send({
+			status:401,
+			message:'无效的Token',
+
+		})
+	}
+	res.send({
+			status:500,
+			message:'未知的错误',
+		}
+	)
+});
 
 // 绑定和侦听指定的主机和端口
 app.listen(3007, () => {
