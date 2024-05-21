@@ -19,7 +19,7 @@ const upload = multer({
 app.use(upload.any())
 // 静态托管
 // app.use(express.static(path.join(__dirname, 'dist')));
-// app.use(express.static("./public"));
+app.use(express.static("./public"));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
@@ -45,14 +45,14 @@ app.use((req, res, next) => {
 })
 
 const jwtconfig = require('./jwt_config/index.js')
-const {
-	expressjwt: jwt
-} = require('express-jwt')
-app.use(jwt({
-	secret:jwtconfig.jwtSecretKey,algorithms:['HS256']
-}).unless({
-	path:[/^\/api\//]
-}))
+// const {
+// 	expressjwt: jwt
+// } = require('express-jwt')
+// app.use(jwt({
+// 	secret:jwtconfig.jwtSecretKey,algorithms:['HS256']
+// }).unless({
+// 	path:[/^\/api\//]
+// }))
 
 const loginRouter = require('./router/login')
 const Joi = require('joi')

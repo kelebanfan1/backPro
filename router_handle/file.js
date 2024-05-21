@@ -32,7 +32,7 @@ exports.uploadFile = (req, res) => {
 			fs.renameSync('./public/upload/' + oldName, './public/upload/' + newName)
 			const sql = 'insert into files set ?'
 			db.query(sql, {
-				file_url: `https://121.36.70.237:3007/upload/${newName}`,
+				file_url: `http://127.0.0.1:3007/upload/${newName}`,
 				file_name: newName,
 				file_size: req.files[0].size * 1 / 1024,
 				upload_time,
@@ -41,7 +41,7 @@ exports.uploadFile = (req, res) => {
 				if (err) return res.cc(err)
 				res.send({
 					status: 0,
-					url: 'https://121.36.70.237:3007/upload/' + newName
+					url: 'http://127.0.0.1:3007/upload/' + newName
 				})
 			})
 		}

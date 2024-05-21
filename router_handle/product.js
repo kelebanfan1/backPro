@@ -46,8 +46,8 @@ exports.createProduct = (req, res) => {
 	const product_create_time = new Date()
 	const product_all_price = product_in_warehouse_number * 1 * product_single_price
 	const sql0 = 'select * from product where product_id = ?'
-	db.query(sql0, product_id, (err, res) => {
-		if (res.length > 0) {
+	db.query(sql0, product_id, (err, results) => {
+		if (results.length > 0) {
 			res.send({
 				status: 1,
 				message: '产品编号已存在'
@@ -210,7 +210,8 @@ exports.auditProduct = (req, res) => {
 		product_out_apply_person,
 		product_in_warehouse_number,
 		product_single_price,
-		product_out_number
+		product_out_number,
+		product_apply_time
 	} = req.body
 	const product_audit_time = new Date()
 	if (product_out_status == "同意") {
@@ -228,6 +229,7 @@ exports.auditProduct = (req, res) => {
 			product_out_audit_person,
 			product_out_apply_person,
 			product_audit_time,
+			product_apply_time,
 			audit_memo
 		}, (err, result) => {
 			if (err) return res.cc(err)

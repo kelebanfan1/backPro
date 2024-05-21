@@ -6,6 +6,7 @@ const crypto = require('crypto')
 // 导入fs处理文件
 fs = require('fs')
 
+// 注意：这里没有做路径的防重复处理
 // 上传头像
 exports.uploadAvatar = (req, res) => {
 	// 生成唯一标识
@@ -15,14 +16,14 @@ exports.uploadAvatar = (req, res) => {
 	fs.renameSync('./public/upload/' + oldName, './public/upload/' + newName)
 	const sql = 'insert into image set ?'
 	db.query(sql, {
-		image_url: `https://121.36.70.237:3007/upload/${newName}`,
+		image_url: `http://127.0.0.1:3007/upload/${newName}`,
 		onlyId
 	}, (err, result) => {
 		if (err) return res.cc(err)
 		res.send({
 			onlyId,
 			status: 0,
-			url: 'https://121.36.70.237:3007/upload/' + newName
+			url: 'http://127.0.0.1:3007/upload/' + newName
 		})
 	})
 }
