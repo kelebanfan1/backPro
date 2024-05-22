@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : back_system1
+Source Server         : back_system
 Source Server Version : 50726
 Source Host           : localhost:3306
-Source Database       : back_system1
+Source Database       : back_system
 
 Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2024-02-04 10:24:52
+Date: 2024-05-22 10:52:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,7 +28,7 @@ CREATE TABLE `files` (
   `upload_time` varchar(255) DEFAULT NULL,
   `download_number` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of files
@@ -44,12 +44,12 @@ CREATE TABLE `image` (
   `account` int(255) DEFAULT NULL,
   `onlyId` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of image
 -- ----------------------------
-INSERT INTO `image` VALUES ('11', 'http://127.0.0.1:3007/upload/头像.jpg', null, 'dabc0c29-21cd-4597-92de-47d303578d6a');
+INSERT INTO `image` VALUES ('13', 'http://127.0.0.1:3007/upload/avatar.jpg', '123666', 'b8df7fcd-15b7-40be-8e9e-76d72b1ed84b');
 
 -- ----------------------------
 -- Table structure for login_log
@@ -62,7 +62,7 @@ CREATE TABLE `login_log` (
   `email` varchar(255) DEFAULT NULL,
   `login_time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of login_log
@@ -87,7 +87,7 @@ CREATE TABLE `message` (
   `message_status` int(11) DEFAULT NULL,
   `message_delete_time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of message
@@ -104,7 +104,7 @@ CREATE TABLE `operation_log` (
   `operation_level` varchar(255) DEFAULT NULL,
   `operation_time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of operation_log
@@ -125,7 +125,7 @@ CREATE TABLE `outproduct` (
   `audit_memo` varchar(255) DEFAULT NULL,
   `product_apply_time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of outproduct
@@ -160,7 +160,7 @@ CREATE TABLE `product` (
   `product_out_audit_person` varchar(255) DEFAULT NULL,
   `audit_memo` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product
@@ -181,18 +181,18 @@ CREATE TABLE `setting` (
 -- ----------------------------
 -- Records of setting
 -- ----------------------------
-INSERT INTO `setting` VALUES ('1', 'swiper1', null, null);
-INSERT INTO `setting` VALUES ('2', 'swiper2', null, null);
-INSERT INTO `setting` VALUES ('3', 'swiper3', null, null);
-INSERT INTO `setting` VALUES ('4', 'swiper4', null, null);
-INSERT INTO `setting` VALUES ('5', 'swiper5', null, null);
-INSERT INTO `setting` VALUES ('6', 'swiper6', null, null);
-INSERT INTO `setting` VALUES ('7', '公司名称', '济南晏猫小酒馆', null);
-INSERT INTO `setting` VALUES ('8', '公司介绍', null, null);
-INSERT INTO `setting` VALUES ('9', '公司架构', null, null);
-INSERT INTO `setting` VALUES ('10', '公司战略', null, null);
-INSERT INTO `setting` VALUES ('11', '公司高层', null, null);
-INSERT INTO `setting` VALUES ('12', '部门设置', '[\"总裁办\"]', null);
+INSERT INTO `setting` VALUES ('1', 'swiper1', 'http://127.0.0.1:3007/upload/logo1.jpg', null);
+INSERT INTO `setting` VALUES ('2', 'swiper2', 'http://127.0.0.1:3007/upload/logo2.jpg', null);
+INSERT INTO `setting` VALUES ('3', 'swiper3', 'http://127.0.0.1:3007/upload/logo3.jpg', null);
+INSERT INTO `setting` VALUES ('4', 'swiper4', 'http://127.0.0.1:3007/upload/logo4.jpg', null);
+INSERT INTO `setting` VALUES ('5', 'swiper5', 'http://127.0.0.1:3007/upload/logo5.jpg', null);
+INSERT INTO `setting` VALUES ('6', 'swiper6', 'http://127.0.0.1:3007/upload/logo6.jpg', null);
+INSERT INTO `setting` VALUES ('7', '公司名称', '广东省梅州市兴宁市', null);
+INSERT INTO `setting` VALUES ('8', '公司介绍', null, '<p>欢迎关注前端小王hs</p>');
+INSERT INTO `setting` VALUES ('9', '公司架构', null, '<p>前端小王hs</p>');
+INSERT INTO `setting` VALUES ('10', '公司战略', null, '<p>前端小王hs是清华大学出版社签约作者</p>');
+INSERT INTO `setting` VALUES ('11', '公司高层', null, '<p>敬请期待小王hs的nest+uniapp项目</p>');
+INSERT INTO `setting` VALUES ('12', '部门设置', '[\"总裁办\",\"组织部\"]', null);
 INSERT INTO `setting` VALUES ('13', '产品设置', '[\"食品类\"]', null);
 
 -- ----------------------------
@@ -215,9 +215,9 @@ CREATE TABLE `users` (
   `read_list` varchar(255) DEFAULT NULL,
   `read_status` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('43', '123666', '$2a$10$TyJm48diZ6VgnsjxSdEKBOR9rfAiH/pcVjrH/RjUKzVWkakNFPBcu', '超级管理员', '', '张三', '男', null, null, '2024-01-31 10:44:18.102', null, '0', '[]', '1');
+INSERT INTO `users` VALUES ('43', '123666', '$2a$10$TyJm48diZ6VgnsjxSdEKBOR9rfAiH/pcVjrH/RjUKzVWkakNFPBcu', '超级管理员', '总裁办', '张三', '男', '123@qq.com', 'http://127.0.0.1:3007/upload/avatar.jpg', '2024-01-31 10:44:18.102', null, '0', '[]', '1');
