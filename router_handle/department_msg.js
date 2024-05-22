@@ -76,10 +76,11 @@ exports.changeUserReadList = (req, res) => {
 	const sql = 'select read_list,read_status,id from users where department = ?'
 	db.query(sql, req.body.department, (err, result) => {
 		if (err) return res.cc(err)
+		// res.send(result)
 		result.forEach((e) => {
 			if (e.read_status == 1) {
 				let arr = JSON.parse(e.read_list)
-				arr.push(JSON.parse(req.body.newid))
+				arr.push(JSON.parse(req.body.newId))
 				arr = JSON.stringify(arr)
 				const sql1 = 'update users set read_list = ? where id = ?'
 				db.query(sql1, [arr, e.id], (err, result) => {})
